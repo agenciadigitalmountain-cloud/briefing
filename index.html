@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing Estratégico | ADM – Agência Digital Mountain</title>
+  <meta name="description" content="Briefing estratégico da Agência Digital Mountain (ADM): conte-nos sobre o seu negócio e receba uma estratégia de conteúdo e vendas online à medida.">
+  <meta name="theme-color" content="#04F412">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="topo__interior">
+      <a href="./" class="topo__marca" aria-label="ADM – Agência Digital Mountain">
+        <img src="assets/logo-adm.png" alt="ADM – Agência Digital Mountain" width="968" height="354">
+      </a>
+      <span class="selo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Dados confidenciais
+      </span>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <section class="intro" id="intro">
+      <p class="intro__etiqueta">Consultoria de Marketing de Conteúdo & Negócios Online</p>
+      <h1>Briefing <span class="destaque">Estratégico</span></h1>
+      <p class="intro__texto">Conte-nos sobre o seu negócio, a sua oferta e o seu cliente ideal. Com estas respostas, a nossa equipa desenha a sua estratégia de conteúdo, posicionamento e vendas.</p>
+      <ul class="intro__info">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Cerca de 12 minutos</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 4v5h7V4M8 20v-6h8v6" fill="none" stroke="currentColor" stroke-width="2"/></svg>Guardado automaticamente</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 13h6M9 17h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Relatório em PDF no final</li>
+      </ul>
+    </section>
+
+    <div id="avisoRascunho" class="aviso" hidden>
+      <span>Retomámos as respostas que deixou a meio.</span>
+      <button type="button" class="ligacao" id="btnRecomecar">Começar do zero</button>
+    </div>
+
+    <!-- Progresso por etapas -->
+    <nav class="etapas" aria-label="Etapas do briefing">
+      <p class="etapas__movel" id="etapaMovel"></p>
+      <div class="etapas__barra" aria-hidden="true"><div class="etapas__preenchida" id="barraProgresso"></div></div>
+      <ol class="etapas__lista" id="listaEtapas"></ol>
+    </nav>
+
+    <form id="formBriefing" class="cartao" novalidate autocomplete="on">
+      <div id="corpoEtapas"></div>
+
+      <!-- Etapa final: revisão -->
+      <section class="etapa" id="etapa-revisao" data-etapa="revisao" hidden aria-labelledby="titulo-revisao">
+        <header class="etapa__cabecalho">
+          <span class="etapa__numero" id="numeroRevisao"></span>
+          <div>
+            <h2 id="titulo-revisao" tabindex="-1">Revisão & envio</h2>
+            <p>Confirme as respostas antes de enviar. Pode editar qualquer etapa.</p>
+          </div>
+        </header>
+        <div id="resumoRevisao" class="revisao"></div>
+
+        <label class="consentimento">
+          <input type="checkbox" id="consentimento" required>
+          <span>Autorizo a ADM a usar estes dados apenas para preparar a minha estratégia e entrar em contacto comigo.</span>
+        </label>
+        <p class="erro" id="erro-consentimento" hidden>Para enviar, precisa de aceitar.</p>
+
+        <!-- Armadilha anti-spam: invisível para pessoas -->
+        <div class="armadilha" aria-hidden="true">
+          <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+      </section>
+
+      <div id="erroEnvio" class="alerta" role="alert" hidden></div>
+
+      <div class="navegacao">
+        <button type="button" class="botao botao--secundario" id="btnVoltar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Voltar
+        </button>
+        <button type="button" class="botao" id="btnSeguinte">
+          Continuar
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="submit" class="botao" id="btnEnviar" hidden>
+          <span class="botao__texto">Enviar briefing</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-6 16-3-7-7-1Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+
+    <!-- Sucesso -->
+    <section id="sucesso" class="cartao sucesso" hidden tabindex="-1" aria-labelledby="tituloSucesso">
+      <div class="sucesso__icone" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 id="tituloSucesso">Briefing enviado!</h2>
+      <p id="mensagemSucesso"></p>
+      <p class="sucesso__ref">Referência: <strong id="referencia"></strong></p>
+      <div class="sucesso__acoes">
+        <button type="button" class="botao" id="btnPdf">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="botao__texto">Descarregar PDF</span>
+        </button>
+        <button type="button" class="botao botao--secundario" id="btnNovo">Preencher novo briefing</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <img src="assets/icone-adm.png" alt="" width="24" height="24">
+    <p>&copy; <span id="ano">2026</span> Agência Digital Mountain (ADM) • Maputo, Moçambique</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/perguntas.js" defer></script>
+  <script src="js/logo-data.js" defer></script>
+  <script src="js/pdf.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
